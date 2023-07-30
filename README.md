@@ -45,10 +45,12 @@ I followed [this](https://www.youtube.com/watch?v=vcYAS_ZBJ6Q&list=PL8z-YHNIa8wk
 
 This is the new Model which extends Authenticatable. The database columns are the same as with User.php. You would implement your relations in that Model as usual, e.g. `bookings()`.
 
+---
 > Modules\Consumer\Routes\web.php | Modules\Consumer\Routes\auth.php
 
 Here you will find very similar routes compared to `routes/web.php` & `routes/auth.php`. The only differences are the middlewares used and the names and route group.
 For further details, take a look into `Modules\Consumer\Providers\RouteServiceProvider @ mapWebRoutes`. You will find the group-prefix and naming there.
+
 ---
 > config/auth.php
 
@@ -83,17 +85,19 @@ This config comes with all Laravel applications with a very good explanation how
     ],
 ],
 ```
+
 ---
 > Modules\Consumer\Http\Controllers\Auth\RegisteredConsumerController.php
 
 This Controller is used to handle registration, which will generate a new Consumer Model instead of a User Model. 
 
+---
 > Modules\Consumer\Http\Requests\Auth\LoginRequest.php
 
 When the Consumer attempts to log in, `LoginRequest@authenticate` executes `Auth::guard('guard-name')->attempt($credentials)` which is the entry point for authenticated sessions.
 You can find more details about Laravel Authentication [here](https://laravel.com/docs/authentication).
----
 
+---
 > Modules\Consumer\Http\Controller\Auth\...
 
 Here you can find plenty of files copied from `app\Http\Controller\Auth\...` with a few changes here and there. I also added the Middlewares to `Kernel.php`, which is also worth reviewing.
