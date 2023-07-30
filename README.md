@@ -90,7 +90,7 @@ This Controller is used to handle registration, which will generate a new Consum
 
 > Modules\Consumer\Http\Requests\Auth\LoginRequest.php
 
-`LoginRequest@authenticate` executes `Auth::guard('guard-name')->attempt($credentials)` which is the entry point for authenticated sessions.
+When the Consumer attempts to log in, `LoginRequest@authenticate` executes `Auth::guard('guard-name')->attempt($credentials)` which is the entry point for authenticated sessions.
 You can find more details about Laravel Authentication [here](https://laravel.com/docs/authentication).
 ---
 
